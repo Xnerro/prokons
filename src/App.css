@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+.head {
+  height: 65px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.height {
+  margin-top: 0;
+  height: 727px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.badge {
+  height: 2.5pc;
+  font-size: 20px;
+  font-weight: 500;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.order {
+  position: relative;
+  height: 30pc;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.order-box {
+  position: relative;
+  height: 15pc;
+  overflow: auto;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+}
+
+.search {
+  width: 6pc;
+}
+
+.category {
+  cursor: pointer;
+}
+
+.invoice {
+  background-color: white;
+  height: 10pc;
+  z-index: 2;
+  position: relative;
+  top: -20px;
+  border-radius: 6px;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(194, 194, 194);
+  border-radius: 5px;
+  height: 20%;
+  display: none;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(77, 77, 77);
+  border-radius: 20px;
+  width: 2px;
+  border: 5px solid rgb(77, 77, 77);
+}
+
+.category:active {
+  background-color: rgb(213, 213, 213);
+}
+
+.edit-list {
+  transform: scale(0.5);
 }
