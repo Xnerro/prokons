@@ -7,7 +7,7 @@ class NavComponent extends Component {
         return (
             <div>
                 <Navbar bg="secondary" variant='dark' className='head'>
-                    <Container fluid>
+                    <Container fluid="lg">
                         <Navbar.Brand className='fw-bold' href="#home">
                             <img
                             src={logo}

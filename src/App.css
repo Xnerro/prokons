@@ -1,10 +1,14 @@
+body {
+  overflow: hidden;
+}
+
 .head {
   height: 65px;
 }
 
 .height {
   margin-top: 0;
-  height: 727px;
+  height: 726px;
 }
 
 .badge {
@@ -71,4 +75,15 @@
 
 .edit-list {
   transform: scale(0.5);
+}
+
+@media screen and (max-width: 1680px) {
+  .height {
+    height: 720px;
+  }
+}
+
+.produck-box {
+  height: 644px;
+  width: 0px;
 }
