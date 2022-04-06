@@ -26,7 +26,7 @@ body {
 
 .order-box {
   position: relative;
-  height: 15pc;
+  height: 14pc;
   overflow: auto;
   z-index: 0;
   -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
@@ -46,7 +46,7 @@ body {
   height: 10pc;
   z-index: 2;
   position: relative;
-  top: -20px;
+  top: -10px;
   border-radius: 6px;
 }
 

@@ -9,27 +9,21 @@ import SearchField from "./search";
 class Content extends Component {
     state ={
         img: [{id: 0, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Baju', text: 'kemeja', nominal: 'Rp', harga: '20000' },
-        {id: 1, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Dewasa', text: 'kemeja', nominal: 'Rp', harga: '20000' },{id: 2, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Anak', text: 'kemeja', nominal: 'Rp', harga: '20000' }, {id: 3, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Anak Balita', text: 'kemeja', nominal: 'Rp', harga: '20000' }]
-    }
-
-    showAttr = (data) =>{
-        // alert('ini apa '+data)
-        console.log(data)
-        const x = this.state.img[data]
-        console.log(x.harga)
-        console.log(x.title)
+        {id: 1, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Dewasa', text: 'kemeja', nominal: 'Rp', harga: '20000' },{id: 2, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Anak', text: 'kemeja', nominal: 'Rp', harga: '20000' }, {id: 3, src:"https://th.bing.com/th/id/OIP.R03fDmx1XrRjnT0wW6RhQQHaHa?pid=ImgDet&rs=1", title: 'Anak Balita', text: 'kemeja', nominal: 'Rp', harga: '20000' }],
+        listOrder : []
     }
 
     addList = (data) =>{
         const x = this.state.img[data]
-        let listData = []
-        listData.push({id: data.id, nama: data.title, harga: data.harga})
+        const listData = {id: x.id, nama: x.title, harga: x.harga}
         console.log(listData)
+        this.setState({listOrder : this.state.listOrder.concat(listData)})
+        console.log(this.state.listOrder)
     }
 
     render() { 
         return (
-            <Container fluid="lg">
+            <Container fluid>
                 <Row className="height w-auto">
                     <Col lg="3" className="d-flex flex-column justify-content-between border-end border">
                         <center className="fw-light">
@@ -51,7 +45,7 @@ class Content extends Component {
                         </center>
                         <Row>
                             <Col className="order p-3 d-flex flex-column justify-content-between">
-                                <OrderList />
+                                <OrderList dataOrder={this.state.listOrder}/>
                                 <Container className="shadow-lg invoice p-3">
                                     <span className="d-flex justify-content-between">
                                         <h5>Subtotal</h5>
@@ -72,7 +66,7 @@ class Content extends Component {
                         </Row>
                         <Row className="p-2">
                             <Col className="produck-box overflow-auto">
-                                <ContainerProduct dataImg={this.state.img} onClickId={this.addList}/>
+                                <ContainerProduct dataImg={this.state.img} onCLickImg={this.addList}/>
                             </Col>
                         </Row>
                     </Col>

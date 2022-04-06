@@ -2,20 +2,13 @@ import React, { Component} from "react";
 import { Container } from 'react-bootstrap'
 
 class OrderList extends Component {
-    state = { 
-        order: []
-     } 
     render() { 
         return (
             <Container fluid="lg" className="bg-white order-box">
-                <div className="order-list fw-light d-flex">
-                    <p>Baju kemja pria baru - Xl</p>
-                </div>
-                <div className="order-list fw-light d-flex">
-                    <p>Baju kemja pria baru - Xl</p>
-                </div>
-                <div className="order-list fw-light d-flex">
-                    <p>Baju kemja pria baru - Xl</p>
+                <div className="d-flex flex-column">
+                    {this.props.dataOrder.map(x => 
+                        <p key={x.id}>{x.nama} - {x.harga}</p>
+                    )}
                 </div>
             </Container>
         );

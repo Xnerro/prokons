@@ -6,8 +6,8 @@ class SearchField extends Component {
     render() { 
         return (
             <Form>
-                <Form.Group className="d-flex">
-                    <Form.Control type="search" placeholder="Search" />
+                <Form.Group className="d-flex ms-4">
+                    <Form.Control type="search" placeholder="Search" className="me-3"/>
                     <Button className="search">
                         <FiSearch />
                     </Button>
