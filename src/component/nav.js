@@ -5,7 +5,6 @@ import {Navbar, Nav, Container} from 'react-bootstrap';
 class NavComponent extends Component {
     render() { 
         return (
-            <div>
                 <Navbar bg="secondary" variant='dark' className='head'>
                     <Container fluid="lg">
                         <Navbar.Brand className='fw-bold' href="#home">
@@ -28,7 +27,6 @@ class NavComponent extends Component {
                             </Nav>
                     </Container>
                 </Navbar>
-            </div>
         );
     }
 }

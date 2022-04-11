@@ -13,16 +13,20 @@ class Content extends Component {
         listOrder : [],
         modal : false,
         onModal : '',
+        subHarga: 0,
+        Total: 0
     }
 
     addList = (data, qty, size) =>{
-        if (qty !== 0){
+        if (qty !== 0 && size !== ''){
             const x = this.state.img.filter(c => c.id === data)
             // const x = this.state.img[data]
             const num = Math.floor(Math.random(1)*100)  
             const listData = {id: num, nama: x[0].title, harga: x[0].harga, qty: qty, size: size}
             this.setState({listOrder : this.state.listOrder.concat(listData)})
             this.setState({modal : false})
+            this.setState({subHarga: x[0].harga*qty})
+            this.setState({Total: this.state.Total + (qty*x[0].harga)})
         }
     }
 
@@ -55,7 +59,14 @@ class Content extends Component {
                 return true
             }
         })
-        this.setState({orderList : this.state.listOrder.splice(index,1)})
+        let c = this.state.listOrder.splice(index,1)
+        this.setState({orderList : c})
+        this.setState({subHarga:  '-'+(c[0].harga * c[0].qty)})
+        this.setState({Total:  this.state.Total -(c[0].harga * c[0].qty)})
+    }
+
+    sumTotal = (data, qty) =>{
+        this.setState({Total: this.state.Total + (qty*data)})
     }
 
     render() { 
@@ -84,12 +95,14 @@ class Content extends Component {
                             <Col className="order p-3 d-flex flex-column justify-content-between">
                                 <OrderList dataOrder={this.state.listOrder} onDelete={this.deleteListOrder}/>
                                 <Container className="shadow-lg invoice p-3 mt-5">
-                                    <span className="d-flex justify-content-between">
+                                    <span className="d-flex justify-content-between mb-3">
                                         <h5>Subtotal</h5>
-                                        <h5>Rp.23123</h5>
+                                        <h5>Rp.{this.state.subHarga}</h5>
                                     </span>
-                                    <h6 className="fw-normal mt-3 mb-3">Diskon</h6>
-                                    <h6 className="fw-normal mt-3 mb-3">Total</h6>
+                                    <span className="d-flex justify-content-between">
+                                        <h6>Total</h6>
+                                        <h6>Rp.{this.state.Total}</h6>
+                                    </span>
                                 </Container>
                                 <Button variant="secondary" className="rounded shadow-lg mt-auto">Checkout</Button>
                             </Col>

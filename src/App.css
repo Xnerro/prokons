@@ -6,18 +6,31 @@ body {
   height: 65px
 }
 
-@media screen and (min-height: 850px) {
+@media screen and (max-height: 768px) {
   .height {
-    height: 600px;
+    height: 500px;
   }
 
   .order {
-    height: 35pc;
+    top: 5pc;
+    height: 30pc;
   }
 
   .height button {
     position: relative;
     top: -20px;
+  }
+
+  .card.ms-5 {
+    margin-left: 25px !important;
+  }
+
+  .modal {
+    left: 0;
+  }
+
+  .modal-content {
+    margin-left: 5pc;
   }
 }
 

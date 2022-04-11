@@ -25,7 +25,7 @@ class ModalContent extends Component {
         }
     render() { 
         return (
-            <div>
+            <div className="overflow">
                 <div className="modal-content d-flex justify-content-between">
                     <div className="pt-4 ps-4 pb-4" >
                         {this.props.dataModal.map( xImg => 
@@ -60,9 +60,8 @@ class ModalContent extends Component {
                         )}
                     </div>
                 </div>
-            <Container fluid className="modal" onClick={this.props.onModal}>
-            </Container>
-        </div>
+                <Container fluid className="modal" onClick={this.props.onModal}></Container>
+            </div>
         );
     }
 }
