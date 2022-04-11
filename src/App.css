@@ -3,34 +3,34 @@ body {
 }
 
 .head {
-  height: 65px;
+  height: 65px
 }
 
-.height {
-  margin-top: 0;
-  height: 726px;
-}
+@media screen and (min-height: 850px) {
+  .height {
+    height: 600px;
+  }
 
-.badge {
-  height: 2.5pc;
-  font-size: 20px;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-}
+  .order {
+    height: 35pc;
+  }
 
-.order {
-  position: relative;
-  height: 30pc;
+  .height button {
+    position: relative;
+    top: -20px;
+  }
 }
 
 .order-box {
-  position: relative;
-  height: 14pc;
   overflow: auto;
   z-index: 0;
-  -webkit-mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 25%, transparent 100%);
+  height: 12pc;
+  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+}
+
+.order-box .delete {
+  cursor: pointer;
 }
 
 .search {
@@ -46,7 +46,7 @@ body {
   height: 10pc;
   z-index: 2;
   position: relative;
-  top: -10px;
+  top: -20px;
   border-radius: 6px;
 }
 
@@ -77,13 +77,54 @@ body {
   transform: scale(0.5);
 }
 
-@media screen and (max-width: 1680px) {
-  .height {
-    height: 720px;
-  }
-}
-
 .produck-box {
   height: 644px;
   width: 0px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+#hasAdd {
+  box-shadow: 0 1px 5px 1px rgb(137, 213, 235);
+}
+
+.add {
+  font-size: 12px;
+}
+
+.modal {
+  position: absolute;
+  display: block;
+  height: 92.5vh;
+  width: 75vw;
+  background-color: rgba(130, 130, 130, 0.806);
+  left: 23.3pc;
+  top: 4pc;
+  z-index: 1;
+}
+
+.modal-content {
+  position: relative;
+  background-color: white;
+  width: 105%;
+  height: 100%;
+  border: none;
+  z-index: 2;
+}
+
+.model-content button {
+  background: #000;
+}
+
+.desc {
+  width: 225px;
+}
+
+.desc .counter {
+  background-color: rgb(232, 232, 232);
+  border: none;
+  width: 30px;
+  height: 30px;
 }
