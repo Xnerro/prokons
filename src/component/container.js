@@ -3,6 +3,7 @@ import { Container, Card } from 'react-bootstrap';
 import ModalAdd from '../admin/component/modal';
 import ModalContent from './modal';
 
+//Render Foto Produk
 class ContainerProduct extends Component {
   state = {
     x: [],

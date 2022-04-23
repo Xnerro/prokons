@@ -6,6 +6,7 @@ import ContainerProduct from './container';
 import OrderList from './orderList';
 import SearchField from './search';
 
+//Component Main side bar dan container
 class Content extends Component {
   state = {
     img: [],

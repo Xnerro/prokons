@@ -3,6 +3,7 @@ import { Badge, Button, Container } from 'react-bootstrap';
 import { BsTrashFill } from 'react-icons/bs';
 import { GrEdit } from 'react-icons/gr';
 
+// Modal tambah baju
 class ModalContent extends Component {
   state = {
     size: [
