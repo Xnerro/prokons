@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Container, Card } from 'react-bootstrap';
-import ModalAdd from '../admin/component/modal';
 import ModalContent from './modal';
 
 //Render Foto Produk
@@ -51,22 +50,6 @@ class ContainerProduct extends Component {
             </Card.Body>
           </Card>
         ))}
-        {this.props.adminValidate && (
-          <Card
-            ref={this.Card}
-            style={{ width: '13rem' }}
-            className="ms-5 p-1 mt-4 d-block h-50 shadow-sm  hover"
-            onClick={this.onAdd}
-          >
-            <Card.Img
-              variant="top"
-              src="https://www.downloadclipart.net/medium/44267-complete-add-images.png"
-              className="opacity-50"
-              style={{ height: '13rem' }}
-            />
-          </Card>
-        )}
-        {this.state.modalAdd && <ModalAdd onCloseModal={this.onClose} />}
       </Container>
     );
   }

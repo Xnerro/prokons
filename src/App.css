@@ -25,7 +25,7 @@ body {
     margin-left: 25px !important;
   }
 
-  .modal {
+  .addModal {
     left: 0;
   }
 
@@ -38,8 +38,8 @@ body {
   overflow: auto;
   z-index: 0;
   height: 12pc;
-  -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  /* -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 75%, transparent 100%); */
 }
 
 .order-box .delete {
@@ -52,6 +52,9 @@ body {
 
 .category {
   cursor: pointer;
+  background-color: white;
+  width: 97.5%;
+  border-radius: 5px;
 }
 
 .invoice {
@@ -107,7 +110,7 @@ body {
   font-size: 12px;
 }
 
-.modal {
+.addModal {
   position: absolute;
   display: block;
   height: 92.5vh;
@@ -115,10 +118,10 @@ body {
   background-color: rgba(130, 130, 130, 0.806);
   left: 23.3pc;
   top: 4pc;
-  z-index: 1;
+  z-index: 2;
 }
 
-.modal-content {
+.addModal-content {
   position: relative;
   background-color: white;
   width: 105%;

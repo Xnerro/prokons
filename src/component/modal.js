@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Badge, Button, Container } from 'react-bootstrap';
-import { BsTrashFill } from 'react-icons/bs';
-import { GrEdit } from 'react-icons/gr';
+import '../App.css';
 
 // Modal tambah baju
 class ModalContent extends Component {
@@ -36,17 +35,12 @@ class ModalContent extends Component {
   };
   render() {
     return (
-      <div className="overflow">
-        <div className="modal-content d-flex justify-content-between">
-          {this.props.onAdmin && (
-            <div
-              className="align-self-end d-flex justify-content-around mt-3"
-              style={{ width: '5vw' }}
-            >
-              <GrEdit style={{ cursor: 'pointer' }} />
-              <BsTrashFill style={{ cursor: 'pointer' }} />
-            </div>
-          )}
+      <div>
+        <Container
+          className="addModal"
+          onClick={this.props.onModal}
+        ></Container>
+        <div className="addModal-content d-flex justify-content-between">
           <div className="pt-4 ps-4 pb-4">
             {this.props.dataModal.map(xImg => (
               <div className="d-flex" key={xImg.id}>
@@ -92,7 +86,7 @@ class ModalContent extends Component {
                       </button>
                     </span>
                     <Button
-                      className="ms-5"
+                      className="ms-3"
                       onClick={() =>
                         this.props.onAdd(
                           xImg.id,
@@ -109,11 +103,6 @@ class ModalContent extends Component {
             ))}
           </div>
         </div>
-        <Container
-          fluid
-          className="modal"
-          onClick={this.props.onModal}
-        ></Container>
       </div>
     );
   }

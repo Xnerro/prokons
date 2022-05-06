@@ -52,7 +52,7 @@ class Content extends Component {
   modalShow = data => {
     this.setState({ modal: true });
     this.setState({ onModal: this.state.img.filter(c => c.id === data) });
-    console.log(this.state.onModal);
+    // console.log(this.state.onModal);
   };
 
   modalHide = () => {
@@ -81,10 +81,10 @@ class Content extends Component {
         <Row className="w-auto">
           <Col
             lg="3"
-            className="d-flex flex-column justify-content-between border-end"
+            className="d-flex flex-column justify-content-between bg-secondary"
           >
             <center className="fw-light">
-              <Row className="border-bottom shadow-sm category">
+              <Row className=" shadow-sm category shadow-lg">
                 <Col className=" pt-3 mb-3 d-blok">
                   <h5 onClick={this.addSetelan}>
                     <GiClothes className="me-3" />
@@ -92,7 +92,7 @@ class Content extends Component {
                   </h5>
                 </Col>
               </Row>
-              <Row className="border-bottom shadow-sm category">
+              <Row className=" shadow-sm category mt-2 shadow-lg">
                 <Col className=" pt-3 mb-3 d-blok">
                   <h5 onClick={this.addBaju}>
                     <FaTshirt className="me-3" />
@@ -100,7 +100,7 @@ class Content extends Component {
                   </h5>
                 </Col>
               </Row>
-              <Row className="border-bottom shadow-sm category">
+              <Row className=" shadow-sm category mt-2 shadow-lg">
                 <Col className=" pt-3 mb-3 d-blok">
                   <h5 onClick={this.addCelana}>
                     <GiTrousers className="me-3" />
@@ -125,10 +125,7 @@ class Content extends Component {
                     <h6>Rp.{this.state.Total}</h6>
                   </span>
                 </Container>
-                <Button
-                  variant="secondary"
-                  className="rounded shadow-lg mt-auto"
-                >
+                <Button variant="primary" className="rounded shadow-lg mt-auto">
                   Checkout
                 </Button>
               </Col>
