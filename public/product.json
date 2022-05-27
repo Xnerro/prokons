@@ -1,0 +1,28 @@
+{
+  "product": {
+    "baju": [
+      {
+        "id": 1,
+        "nama": "Baju.jpg",
+        "harga": "20000"
+      },
+      {
+        "id": 2,
+        "nama": "Baju Anak.jpg",
+        "harga": "20000"
+      }
+    ],
+    "celana": [
+      {
+        "id": 1,
+        "nama": "Celana.jpg",
+        "harga": "20000"
+      },
+      {
+        "id": 2,
+        "nama": "Jeans.jpg",
+        "harga": "20000"
+      }
+    ]
+  }
+}

@@ -6,6 +6,8 @@ body {
   height: 65px
 }
 
+@media screen and (max-width: 1024px) {}
+
 @media screen and (max-height: 768px) {
   .height {
     height: 500px;
@@ -26,18 +28,23 @@ body {
   }
 
   .addModal {
-    left: 0;
+    background-color: #000;
+    left: 21pc !important;
   }
 
   .modal-content {
     margin-left: 5pc;
+  }
+
+  .invoice {
+    margin-top: 85px !important;
   }
 }
 
 .order-box {
   overflow: auto;
   z-index: 0;
-  height: 12pc;
+  height: 15pc;
   /* -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%); */
 }
@@ -59,34 +66,34 @@ body {
 
 .invoice {
   background-color: white;
-  height: 10pc;
+  height: 3.5pc;
   z-index: 2;
   position: relative;
   top: -20px;
   border-radius: 6px;
+  margin-top: 3rem;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
+  height: 6px;
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(194, 194, 194);
+  background: rgba(137, 137, 137, 0.151);
   border-radius: 5px;
-  height: 20%;
-  display: none;
+  width: 1px;
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgb(77, 77, 77);
   border-radius: 20px;
-  width: 2px;
-  border: 5px solid rgb(77, 77, 77);
 }
 
 .category:active {
-  background-color: rgb(213, 213, 213);
+  background-color: black;
+  color: white;
 }
 
 .edit-list {
@@ -116,7 +123,7 @@ body {
   height: 92.5vh;
   width: 75vw;
   background-color: rgba(130, 130, 130, 0.806);
-  left: 23.3pc;
+  left: 23.2pc;
   top: 4pc;
   z-index: 2;
 }
@@ -143,4 +150,23 @@ body {
   border: none;
   width: 30px;
   height: 30px;
+}
+
+.alert-custom {
+  width: 35%;
+  text-align: center;
+  bottom: 55%;
+  height: 50px;
+}
+
+.selectedFile {
+  box-shadow: 0 0 6px #03aee7;
+  cursor: pointer;
+}
+
+.pop {
+  position: absolute;
+  display: inherit !important;
+  align-self: flex-end;
+  cursor: pointer;
 }

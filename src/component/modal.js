@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
-import { Badge, Button, Container } from 'react-bootstrap';
-import '../App.css';
+import { Badge, Button, Container, Form } from 'react-bootstrap';
+import { uniq } from 'lodash';
 
+import '../App.css';
 // Modal tambah baju
 class ModalContent extends Component {
   state = {
-    size: [
-      { id: 0, size: 'XS' },
-      { id: 1, size: 'S' },
-      { id: 2, size: 'M' },
-      { id: 3, size: 'X' },
-      { id: 4, size: 'XL' },
-      { id: 5, size: 'XXL' },
-      { id: 6, size: 'XXXL' },
-    ],
     qty: 0,
     sizeFix: '',
+    colorFix: '',
+    color: [],
+    size: [],
+    msg: '',
+    show: false,
+  };
+
+  componentDidMount = () => {
+    let arr = [];
+    let arr2 = [];
+    this.props.dataModal[0].variant[0].map(x => {
+      arr.push(x.size);
+      arr2.push(x.color);
+    });
+    this.setState({ size: uniq(arr), color: uniq(arr2) });
   };
 
   getSize = event => {
     this.setState({ sizeFix: event.target.value });
+  };
+
+  getColor = e => {
+    this.setState({ colorFix: e.target.value });
   };
 
   incrementHand = () => {
@@ -33,10 +44,35 @@ class ModalContent extends Component {
       this.setState({ qty: x });
     }
   };
+
+  filterOrder = () => {
+    let z = [];
+    this.props.dataModal.map(c =>
+      c.variant.map(
+        c =>
+          (z = c.filter(
+            x =>
+              x.color === this.state.colorFix && x.size === this.state.sizeFix
+          ))
+      )
+    );
+    if (z.length === 0) {
+      this.setState({ show: true, msg: 'variant tidak tersedia' });
+      console.log('variant tidak tersedia');
+    } else if (z[0].stock > 0) {
+      this.setState({ show: false });
+      console.log(z);
+    } else if (z[0].stock === 0) {
+      console.log('stock habis');
+      this.setState({ show: true, msg: 'Stok Habis' });
+    }
+  };
+
   render() {
     return (
       <div>
         <Container
+          fluid
           className="addModal"
           onClick={this.props.onModal}
         ></Container>
@@ -45,26 +81,48 @@ class ModalContent extends Component {
             {this.props.dataModal.map(xImg => (
               <div className="d-flex" key={xImg.id}>
                 <img
-                  src={xImg.src}
+                  src={xImg.image}
                   style={{ width: '25rem', height: '25rem' }}
                   className="shadow-sm"
                 />
                 <div className="ms-4 mt-2 d-flex flex-column justify-content-between desc">
                   <div>
-                    <h3>{xImg.title}</h3>
-                    <p>{xImg.text}</p>
-                    <div className="d-flex flex-wrap mt-5">
-                      {this.state.size.map(x => (
-                        <span key={x.id} className="me-4">
-                          <p>{x.size}</p>
-                          <input
-                            type="radio"
-                            name="size"
-                            onChange={this.getSize}
-                            value={x.size}
-                          />
-                        </span>
-                      ))}
+                    <h5>{xImg.nama}</h5>
+                    {this.state.show && (
+                      <div
+                        className="rounded"
+                        style={{ backgroundColor: '#ff7376' }}
+                      >
+                        <p className="ms-3">{this.state.msg}</p>
+                      </div>
+                    )}
+                    <div className="d-flex flex-column flex-wrap mt-5">
+                      <span className="d-flex">
+                        {this.state.size.map((x, i) => (
+                          <span key={i} className="me-2">
+                            <p>{x}</p>
+                            <input
+                              name="size"
+                              type="radio"
+                              value={x}
+                              onChange={this.getSize}
+                            />
+                          </span>
+                        ))}
+                      </span>
+                      <span className="d-flex">
+                        {this.state.color.map((x, i) => (
+                          <span key={i} className="me-2 mt-3">
+                            <p>{x}</p>
+                            <input
+                              name="color"
+                              type="radio"
+                              value={x}
+                              onChange={this.getColor}
+                            />
+                          </span>
+                        ))}
+                      </span>
                     </div>
                   </div>
                   <div className="ms-0 d-flex justify-content-between">
@@ -87,13 +145,17 @@ class ModalContent extends Component {
                     </span>
                     <Button
                       className="ms-3"
-                      onClick={() =>
-                        this.props.onAdd(
+                      onClick={async () => {
+                        console.log(xImg.id);
+                        await this.filterOrder();
+                        await this.props.onAdd(
                           xImg.id,
                           this.state.qty,
-                          this.state.sizeFix
-                        )
-                      }
+                          this.state.sizeFix,
+                          this.state.show,
+                          this.state.colorFix
+                        );
+                      }}
                     >
                       Add
                     </Button>

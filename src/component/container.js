@@ -17,7 +17,7 @@ class ContainerProduct extends Component {
   render() {
     return (
       <Container className="container-produk d-flex flex-wrap ps-2 pt-1">
-        {this.props.onModal && (
+        {this.props.onModal === 'modal' && (
           <ModalContent
             onModal={this.props.onModalHide}
             dataModal={this.props.modalImg}
@@ -36,16 +36,15 @@ class ContainerProduct extends Component {
           >
             <Card.Img
               variant="top"
-              src={data.src}
+              src={data.image}
               style={{ height: '13rem' }}
             />
-            <Card.Body className="d-flex justify-content-between">
+            <Card.Body className="d-flex flex-column">
               <div>
-                <Card.Title className="fs-6 fw-bold">{data.title}</Card.Title>
-                <Card.Text>{data.text}</Card.Text>
+                <Card.Title className="fs-6 fw-bold ">{data.nama}</Card.Title>
               </div>
-              <Card.Text className="align-self-end">
-                {data.nominal + data.harga}
+              <Card.Text className="align-self-start">
+                {'Rp' + data.variant[0][0].price}
               </Card.Text>
             </Card.Body>
           </Card>

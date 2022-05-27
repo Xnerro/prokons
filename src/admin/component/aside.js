@@ -9,11 +9,11 @@ import {
   MdAddShoppingCart,
 } from 'react-icons/md';
 import React, { useState, useEffect } from 'react';
-import User from './menuPengguna';
-import TambahBarang from './tambahanbarang';
-import DataBarang from './dataBarang';
-import StockTable from './tablestock';
-import ChartContainer from './tampilanChart';
+import User from './user/menuPengguna';
+import TambahBarang from './barang/tambahanbarang';
+import DataBarang from './barang/dataBarang';
+import StockTable from './barang/tablestock';
+import ChartContainer from './chart/tampilanChart';
 import { useNavigate } from 'react-router-dom';
 
 function Sidebar() {
@@ -22,7 +22,10 @@ function Sidebar() {
   const [apath, setPath] = useState(null);
   const history = useNavigate();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setPath('/kasir');
+  }, []);
+
   const handleShow = () => {
     setShow('dataBarang');
     setActivePage('dataBarang');
@@ -49,7 +52,6 @@ function Sidebar() {
   };
 
   const toKasir = () => {
-    setPath('/kasir');
     history(apath);
   };
 
@@ -105,7 +107,7 @@ function Sidebar() {
           >
             <h5>
               <MdNoteAdd />
-              Tambahan Barang
+              Tambah Barang
             </h5>
           </Row>
           <Row

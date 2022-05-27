@@ -1,0 +1,14 @@
+.tab tr,
+td {
+    padding-top: 18px;
+    border-bottom: 1px solid black;
+}
+
+.tab thead,
+th {
+    font-weight: 400;
+}
+
+.rounded-det {
+    border-radius: 15px !important;
+}

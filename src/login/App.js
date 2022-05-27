@@ -1,34 +1,49 @@
 import React, { Component } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { withRouter } from '../component/navigation';
+import axios from 'axios';
+import '../App.css';
+import jwt from 'jwt-decode';
 
 class Login extends Component {
   state = {
-    account: [
-      { user: 'bagus', admin: true },
-      { user: 'syam', admin: false },
-    ],
-    admin: '',
-  };
-  constructor() {
-    super();
-    this.toNavigate = this.toNavigate.bind(this);
-  }
-
-  userHadle = event => {
-    this.setState({ admin: event.target.value });
+    name: '',
+    password: '',
+    show: false,
   };
 
-  toNavigate = () => {
-    const x = this.state.account.filter(c => c.user === this.state.admin);
-    if (x[0].admin === true) {
-      let path = 'kasir/admin';
-      this.props.navigate(path, { nama: 'bagus' });
-    } else {
-      let path = 'kasir';
-      this.props.navigate(path);
-    }
+  getData = async e => {
+    e.preventDefault();
+    await axios({
+      url: `${process.env.PUBLIC_URL}/users/login`,
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      data: {
+        username: this.state.name,
+        password: this.state.password,
+      },
+    })
+      .then(res => {
+        const user = jwt(res.data.data.token).data;
+        this.props.akun(user.name, user.role);
+        this.props.token(res.data.data.token);
+        localStorage.setItem('name', user.name);
+        localStorage.setItem('role', user.role);
+        localStorage.setItem('token', res.data.data.token);
+        if (user.role === 'admin') {
+          let path = 'kasir/admin';
+          this.props.navigate(path);
+        } else {
+          let path = '/kasir';
+          this.props.navigate(path);
+        }
+      })
+      .catch(err => {
+        console.log(err.response);
+        this.setState({ show: true, msg: err.response.data.message });
+      });
   };
+
   render() {
     return (
       <Container
@@ -37,27 +52,41 @@ class Login extends Component {
         className="bg-light d-flex align-items-center justify-content-center"
       >
         <Form className="w-50 h-75 shadow d-flex flex-column align-items-center justify-content-around">
-          <h1 className="mt-5">Login</h1>
-          <Form.Group className="w-75 mt-5">
+          <span className="d-flex flex-column align-items-center mt-2">
+            <img src="azuraLogo.png" width="100px" />
+            <h1 className="">Login</h1>
+          </span>
+          <Form.Group className="w-75 mt-1">
             <Form.Label>Username</Form.Label>
             <Form.Control
-              onChange={this.userHadle}
+              onChange={e => this.setState({ name: e.target.value })}
               type="text"
               placeholder="username"
             />
           </Form.Group>
           <Form.Group className="w-75">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="text" placeholder="password" />
+            <Form.Control
+              type="password"
+              placeholder="password"
+              onChange={e => this.setState({ password: e.target.value })}
+            />
           </Form.Group>
           <Button
             type="submit"
             variant="primary"
             className="mb-5 w-75"
-            onClick={this.toNavigate}
+            onClick={this.getData}
           >
             Login
           </Button>
+          <Alert
+            show={this.state.show}
+            variant="danger"
+            className="alert-custom position-absolute"
+          >
+            {this.state.msg}
+          </Alert>
         </Form>
       </Container>
     );
