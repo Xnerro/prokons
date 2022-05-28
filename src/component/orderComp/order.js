@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 
 class Order extends Component {
-  state = { bayar: 0 };
+  state = { bayar: 0, print: false };
   handleCash = e => {
     e.preventDefault();
     let x = document.getElementById('cash').value;
@@ -91,7 +91,7 @@ class Order extends Component {
                     }}
                     className="mb-3 w-100"
                   >
-                    Print
+                    Checkout
                   </Button>
                 </div>
               </div>

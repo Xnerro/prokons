@@ -5,7 +5,7 @@ import { Col, Container, Row, Button } from 'react-bootstrap';
 import { FaTshirt } from 'react-icons/fa';
 import { GiTrousers, GiClothes } from 'react-icons/gi';
 import ContainerProduct from './container';
-import Order from './order';
+import Order from './orderComp/order';
 import OrderList from './orderList';
 
 //Component Main side bar dan container
