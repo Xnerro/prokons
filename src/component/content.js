@@ -7,6 +7,7 @@ import { GiTrousers, GiClothes } from 'react-icons/gi';
 import ContainerProduct from './container';
 import Order from './orderComp/order';
 import OrderList from './orderList';
+import '../menu.css';
 
 //Component Main side bar dan container
 class Content extends Component {
@@ -109,42 +110,42 @@ class Content extends Component {
         <Row className="w-auto">
           <Col
             lg="3"
-            className="d-flex flex-column justify-content-between bg-secondary pb-5"
+            className="d-flex flex-column justify-content-between menucolor pb-5"
             style={{ height: '96vh' }}
           >
             <center className="fw-light">
-              <Row className=" shadow-sm category shadow-lg mt-3">
-                <Col className=" pt-3 mb-3 d-blok">
-                  <h5 onClick={this.addSetelan}>
-                    <GiClothes className="me-3" />
-                    Set
-                  </h5>
+              <Row className="menubtn-color shadow-sm category shadow-lg mt-3">
+                <Col className=" p-1 d-blok">
+                  <div class="d-flex align-items-center justify-content-center" onClick={this.addSetelan}>
+                    <GiClothes classname="me-3" size="1.8em" />
+                    <h5 className="p-1 mt-2">Setelan</h5>
+                  </div>
                 </Col>
               </Row>
-              <Row className=" shadow-sm category mt-2 shadow-lg">
-                <Col className=" pt-3 mb-3 d-blok">
-                  <h5 onClick={this.addBaju}>
-                    <FaTshirt className="me-3" />
-                    Baju
-                  </h5>
+              <Row className="menubtn-color shadow-sm category mt-2 shadow-lg">
+                <Col className=" p-1 d-blok">
+                  <div class="d-flex align-items-center justify-content-center" onClick={this.addBaju}>
+                    <FaTshirt classname="me-3" size="1.8em" />
+                    <h5 className="p-1 mt-2">Baju</h5>
+                  </div>
                 </Col>
               </Row>
-              <Row className=" shadow-sm category mt-2 shadow-lg">
-                <Col className=" pt-3 mb-3 d-blok">
-                  <h5 onClick={this.addCelana}>
-                    <GiTrousers className="me-3" />
-                    Celana
-                  </h5>
+              <Row className="menubtn-color shadow-sm category mt-2 shadow-lg">
+                <Col className=" p-1 d-blok">
+                  <div class="d-flex align-items-center justify-content-center" onClick={this.addCelana}>
+                    <GiTrousers classname="me-3" size="1.8em" />
+                    <h5 className="p-1 mt-2">Celana</h5>
+                  </div>
                 </Col>
               </Row>
             </center>
-            <Row className="height d-flex align-content-end mt-3">
+            <Row className="height d-flex align-content-end mt-2">
               <Col className="order p-3 d-flex flex-column justify-content-between">
                 <OrderList
                   dataOrder={this.state.listOrder}
                   onDelete={this.deleteListOrder}
                 />
-                <Container className="shadow-lg invoice p-3">
+                <Container className="menubtn-total shadow-lg invoice p-3">
                   <span className="d-flex justify-content-between">
                     <h6>Total</h6>
                     <h6>Rp.{this.state.Total}</h6>

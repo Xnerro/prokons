@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { withRouter } from './navigation';
 import axios from 'axios';
+import '../menu.css';
 
 class NavComponent extends Component {
   logOut = async () => {
@@ -21,47 +22,47 @@ class NavComponent extends Component {
   };
   render() {
     return (
-      <Navbar bg="secondary" variant="dark" className="head">
+      <Navbar variant="dark" className="head navcolor">
         <Container fluid="lg">
           <Navbar.Brand className="fw-bold" href="#home">
-            <img
-              src={'/azuraLogo.png'}
-              width="50px"
-              className="me-4"
-              alt="Logo"
-            />
-            Kasir Azura
+              <div className="d-flex align-items-center">
+                <img alt="azuraLogo" src="/azuraLogo.png" width="40px" />
+                <h4 className="m-2">Kasir Azura</h4>
+              </div>
           </Navbar.Brand>
           <Nav className="float-end">
             {localStorage.getItem('role') === 'admin' ? (
-              <Nav.Link
-                onClick={() => {
+              <Nav.Link>
+                <div class="p-1 btn-secondary rounded mb-0" onClick={() => {
                   let path = '/kasir/admin';
                   this.props.navigate(path);
                 }}
               >
                 Admin Menu
+              </div>
               </Nav.Link>
             ) : null}
             <Nav.Link>
-              {localStorage.getItem('name')}
-              <img
-                src="https://th.bing.com/th/id/OIP.vIq_QWTLmuEoct13lW83UwHaHa?pid=ImgDet&rs=1"
-                className="rounded-circle ms-2 profile"
-                width="30px"
-                height="30px"
-                alt="profile"
-              />
+              <div className="d-flex align-items-center">
+                {localStorage.getItem('name')}
+                <img
+                  alt="usericon"
+                  src="https://th.bing.com/th/id/OIP.vIq_QWTLmuEoct13lW83UwHaHa?pid=ImgDet&rs=1"
+                  className="rounded-circle ms-2 profile"
+                  width="32px"
+                  height="32px"
+                />
+              </div>
             </Nav.Link>
             <Nav.Link>
-              <p
-                className="position-absolute"
-                onClick={async () => {
-                  await this.logOut();
-                }}
-              >
-                Logout
-              </p>
+              <div
+                  className="mt-1 d-flex align-items-center"
+                  onClick={() => {
+                    this.logOut();
+                  }}
+                >
+                  Logout
+              </div>
             </Nav.Link>
           </Nav>
         </Container>

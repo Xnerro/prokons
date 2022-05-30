@@ -57,7 +57,7 @@ class ModalContent extends Component {
       )
     );
     if (z.length === 0) {
-      this.setState({ show: true, msg: 'variant tidak tersedia' });
+      this.setState({ show: true, msg: 'Variant tidak tersedia' });
       console.log('variant tidak tersedia');
     } else if (z[0].stock > 0) {
       this.setState({ show: false });

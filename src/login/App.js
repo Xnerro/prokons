@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
+import {
+  MdOutlineAccountBox,
+  MdLock,
+} from 'react-icons/md';
 import { withRouter } from '../component/navigation';
 import axios from 'axios';
 import '../App.css';
@@ -51,24 +55,24 @@ class Login extends Component {
         style={{ height: '100vh', width: '100vw' }}
         className="bg-light d-flex align-items-center justify-content-center"
       >
-        <Form className="w-50 h-75 shadow d-flex flex-column align-items-center justify-content-around">
+        <Form className="form-set w-50 h-75 shadow d-flex flex-column align-items-center justify-content-around rounded mb-0">
           <span className="d-flex flex-column align-items-center mt-2">
-            <img src="azuraLogo.png" width="100px" />
+            <img alt="azuraLogo" src="azuraLogo.png" width="100px" />
             <h1 className="">Login</h1>
           </span>
           <Form.Group className="w-75 mt-1">
-            <Form.Label>Username</Form.Label>
+            <Form.Label><MdOutlineAccountBox size="1.5em"/> Username</Form.Label>
             <Form.Control
               onChange={e => this.setState({ name: e.target.value })}
               type="text"
-              placeholder="username"
+              placeholder="Masukan username"
             />
           </Form.Group>
           <Form.Group className="w-75">
-            <Form.Label>Password</Form.Label>
+            <Form.Label><MdLock size="1.5em"/> Password</Form.Label>
             <Form.Control
               type="password"
-              placeholder="password"
+              placeholder="Password"
               onChange={e => this.setState({ password: e.target.value })}
             />
           </Form.Group>
