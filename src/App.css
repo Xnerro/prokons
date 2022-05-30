@@ -6,6 +6,11 @@ body {
   height: 65px
 }
 
+/* Login */
+.form-set {
+  background-color: rgb(220, 238, 255);
+}
+
 @media screen and (max-width: 1024px) {}
 
 @media screen and (max-height: 768px) {
@@ -29,7 +34,7 @@ body {
 
   .addModal {
     background-color: #000;
-    left: 21pc !important;
+    left: 0pc !important;
   }
 
   .modal-content {
@@ -92,7 +97,7 @@ body {
 }
 
 .category:active {
-  background-color: black;
+  background-color: #002442;
   color: white;
 }
 
