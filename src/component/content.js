@@ -110,7 +110,7 @@ class Content extends Component {
         <Row className="w-auto">
           <Col
             lg="3"
-            className="d-flex flex-column justify-content-between menucolor pb-5"
+            className="d-flex flex-column justify-content-between menucolor pb-5 overflow-auto"
             style={{ height: '96vh' }}
           >
             <center className="fw-light">

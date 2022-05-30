@@ -61,8 +61,8 @@ function Sidebar() {
       <Row>
         <Col
           lg={3}
-          className="menucolor"
-          style={{ paddingTop: '10px', height: '100vh' }}
+          className="d-flex flex-column justify-content-start menucolor pb-5 overflow-auto"
+          style={{ height: '96vh' }}
         >
           <Row
             className={`p-1 mt-3 menubtn-color rounded mx-1 mb-2 text-center shadow ${
