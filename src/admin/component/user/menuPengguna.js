@@ -49,7 +49,7 @@ function User() {
   }, [alert]);
 
   return (
-    <div className="d-flex flex-column mt-5">
+    <div className="d-flex flex-column">
       {user === 'buat' ? (
         <BuatUser close={handleAddUser2} alert={getAlert} />
       ) : null}
@@ -66,7 +66,7 @@ function User() {
       >
         {alert.msg}
       </Alert>
-      <Table striped bordered hover className="align-middle">
+      <Table striped bordered hover className="align-middle mt-5">
         <thead>
           <tr>
             <th>No</th>

@@ -66,43 +66,51 @@ function Sidebar() {
         >
           <Row
             className={`p-1 mt-3 menubtn-color rounded mx-1 mb-2 text-center shadow ${
-              activepage == 'dataBarang' ? 'menubtn-color-active text-white' : ''
+              activepage == 'dataBarang'
+                ? 'menubtn-color-active text-white'
+                : ''
             }`}
             onClick={handleShow}
             style={{ cursor: 'pointer' }}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdViewList size="2em" />
               <h5 className="p-1 mt-2">Data Barang</h5>
             </div>
           </Row>
           <Row
             className={`p-1 menubtn-color rounded mx-1 mb-2 text-center shadow ${
-              activepage == 'laporanPenjualan' ? 'menubtn-color-active text-white' : ''
+              activepage == 'laporanPenjualan'
+                ? 'menubtn-color-active text-white'
+                : ''
             }`}
             onClick={handleShow2}
             style={{ cursor: 'pointer' }}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdLeaderboard size="2em" />
               <h5 className="p-1 mt-2">Laporan Penjualan</h5>
             </div>
           </Row>
           <Row
             className={`p-1 menubtn-color rounded mx-1 mb-2 text-center shadow ${
-              activepage == 'menuPengguna' ? 'menubtn-color-active text-white' : ''
+              activepage == 'menuPengguna'
+                ? 'menubtn-color-active text-white'
+                : ''
             }`}
             onClick={handleShow3}
             style={{ cursor: 'pointer' }}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdManageAccounts size="2em" />
               <h5 className="p-1 mt-2">Menu Pengguna</h5>
             </div>
           </Row>
           <Row
             className={`p-1 menubtn-color rounded mx-1 mb-2 text-center shadow ${
-              activepage == 'tambahanBarang' ? 'menubtn-color-active text-white' : ''
+              activepage == 'tambahanBarang'
+                ? 'menubtn-color-active text-white'
+                : ''
             }`}
             onClick={handleShow4}
             style={{ cursor: 'pointer' }}
@@ -114,12 +122,14 @@ function Sidebar() {
           </Row>
           <Row
             className={`p-1 menubtn-color rounded mx-1 mb-2 text-center shadow ${
-              activepage == 'tableStock' ? 'menubtn-color-active text-white' : ''
+              activepage == 'tableStock'
+                ? 'menubtn-color-active text-white'
+                : ''
             }`}
             onClick={handleShow5}
             style={{ cursor: 'pointer' }}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdTableView size="2em" />
               <h5 className="p-1 mt-2">Table Stock</h5>
             </div>
@@ -129,7 +139,7 @@ function Sidebar() {
             style={{ cursor: 'pointer' }}
             onClick={toKasir}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdAddShoppingCart size="2em" />
               <h5 className="p-1 mt-2">Kasir</h5>
             </div>
