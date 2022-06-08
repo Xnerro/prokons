@@ -13,12 +13,21 @@ class StockTable extends Component {
     show: null,
     id: null,
     variant: null,
+    color: [],
   };
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.alert.show !== this.state.alert.show) {
       this.getData();
     }
+  };
+
+  getColor = async () => {
+    axios
+      .get(`${process.env.PUBLIC_URL}/colors`, {
+        headers: { Authorization: `${localStorage.getItem('token')}` },
+      })
+      .then(res => this.setState({ color: res.data.data }));
   };
 
   getData = async () => {
@@ -91,6 +100,7 @@ class StockTable extends Component {
 
   componentDidMount = () => {
     this.getData();
+    this.getColor();
   };
 
   closeModal = () => {
@@ -104,7 +114,11 @@ class StockTable extends Component {
         style={{ height: '90vh' }}
       >
         {this.state.show === 'add' ? (
-          <AddVariant close={this.closeModal} alert={this.alertAdd} />
+          <AddVariant
+            close={this.closeModal}
+            alert={this.alertAdd}
+            color={this.state.color}
+          />
         ) : null}
         {this.state.show === 'delete' ? (
           <ValidationDelete
@@ -121,6 +135,7 @@ class StockTable extends Component {
               hide={this.hideAlert}
               variant={this.state.variant}
               id={this.state.id}
+              color={this.state.color}
             />
           ) : null}
           <Container

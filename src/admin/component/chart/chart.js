@@ -22,11 +22,11 @@ class ChartAdmin extends Component {
       });
   };
 
-  filtering = result => {
+  filtering = async result => {
     let y = [];
     let z = [];
     let arr = [];
-    result.map(x => {
+    await result.map(x => {
       var d = new Date(Date.parse(x.transactionDate));
       arr.push({
         data: x.totalOrder,
@@ -35,7 +35,7 @@ class ChartAdmin extends Component {
       });
     });
     let group = groupBy(arr, 'label');
-    var res = map(keys(group), x => {
+    var res = await map(keys(group), x => {
       return reduce(
         group[x],
         (i, j) => {
@@ -48,11 +48,11 @@ class ChartAdmin extends Component {
         { labels: x, count: 0 }
       );
     });
-    res.map(x => {
+    await res.map(x => {
       y.push(x.count);
       z.push(x.day);
     });
-    this.setState({ data: y, labels: z });
+    await this.setState({ data: y, labels: z });
   };
 
   componentDidMount = async () => {

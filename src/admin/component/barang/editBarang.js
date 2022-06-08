@@ -121,34 +121,31 @@ class EditVariant extends Component {
                 <Col>
                   <Form.Group className="d-flex flex-wrap flex-column">
                     <Form.Label>Warna :</Form.Label>
-                    <div className="d-flex flex-wrap">
-                      {[
-                        'Merah',
-                        'Biru',
-                        'Putih',
-                        'Orange',
-                        'Hitam',
-                        'Army',
-                        'Abu',
-                      ].map(x => {
-                        return (
-                          <div key={`inline-${x}`} className="mb-3 ms-2">
-                            <Form.Check
-                              inline
-                              checked={x === this.state.color ? true : false}
-                              label={x}
-                              name="group3"
-                              type="radio"
-                              id={`inline-${x}-1`}
-                              value={x}
-                              onChange={e => {
-                                this.setState({ color: e.target.value });
-                              }}
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
+                    <select className="form-select">
+                      <option>Buka Untuk Memilih Warna</option>
+                      {this.props.color.map(x => (
+                        <option
+                          className="form-control"
+                          key={x.id}
+                          label={x.name}
+                          name="group3"
+                          type="radio"
+                          id={`inline-${x}-1`}
+                          value={x.name}
+                          onChange={e => {
+                            this.setState(prev => {
+                              let properties = {
+                                ...prev.properties,
+                              };
+                              properties.warna = e.target.value;
+                              return { properties };
+                            });
+                          }}
+                        >
+                          {x.name}
+                        </option>
+                      ))}
+                    </select>
                   </Form.Group>
                 </Col>
               </Row>

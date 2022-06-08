@@ -7,6 +7,7 @@ import {
   MdViewList,
   MdNoteAdd,
   MdAddShoppingCart,
+  MdColorLens,
 } from 'react-icons/md';
 import React, { useState, useEffect } from 'react';
 import User from './user/menuPengguna';
@@ -14,6 +15,7 @@ import TambahBarang from './barang/tambahanbarang';
 import DataBarang from './barang/dataBarang';
 import StockTable from './barang/tablestock';
 import ChartContainer from './chart/tampilanChart';
+import TableColor from './color/color';
 import { useNavigate } from 'react-router-dom';
 import '../../menu.css';
 
@@ -50,6 +52,11 @@ function Sidebar() {
   const handleShow5 = () => {
     setShow('tableStock');
     setActivePage('tableStock');
+  };
+
+  const handleShow6 = () => {
+    setShow('tableColor');
+    setActivePage('tableColor');
   };
 
   const toKasir = () => {
@@ -115,7 +122,7 @@ function Sidebar() {
             onClick={handleShow4}
             style={{ cursor: 'pointer' }}
           >
-            <div class="d-flex align-items-center justify-content-center">
+            <div className="d-flex align-items-center justify-content-center">
               <MdNoteAdd size="2em" />
               <h5 className="p-1 mt-2">Tambahan Barang</h5>
             </div>
@@ -132,6 +139,20 @@ function Sidebar() {
             <div className="d-flex align-items-center justify-content-center">
               <MdTableView size="2em" />
               <h5 className="p-1 mt-2">Table Stock</h5>
+            </div>
+          </Row>
+          <Row
+            className={`p-1 menubtn-color rounded mx-1 mb-2 text-center shadow ${
+              activepage == 'tableColor'
+                ? 'menubtn-color-active text-white'
+                : ''
+            }`}
+            onClick={handleShow6}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="d-flex align-items-center justify-content-center">
+              <MdColorLens size="2em" />
+              <h5 className="p-1 mt-2">Tabel Color</h5>
             </div>
           </Row>
           <Row
@@ -152,6 +173,7 @@ function Sidebar() {
             {show == 'menuPengguna' && <User />}
             {show == 'tambahanBarang' && <TambahBarang />}
             {show == 'tableStock' && <StockTable />}
+            {show == 'tableColor' && <TableColor />}
           </Row>
         </Col>
       </Row>
