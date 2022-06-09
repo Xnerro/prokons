@@ -173,7 +173,18 @@ class AddVariant extends Component {
                 </Form.Group>
                 <Form.Group className="d-flex flex-wrap flex-column">
                   <Form.Label>Warna :</Form.Label>
-                  <select className="form-select">
+                  <select
+                    className="form-select"
+                    onChange={e => {
+                      this.setState(prev => {
+                        let properties = {
+                          ...prev.properties,
+                        };
+                        properties.warna = e.target.value;
+                        return { properties };
+                      });
+                    }}
+                  >
                     <option>Buka Untuk Memilih Warna</option>
                     {this.props.color.map(x => (
                       <option
@@ -184,15 +195,6 @@ class AddVariant extends Component {
                         type="radio"
                         id={`inline-${x}-1`}
                         value={x.name}
-                        onChange={e => {
-                          this.setState(prev => {
-                            let properties = {
-                              ...prev.properties,
-                            };
-                            properties.warna = e.target.value;
-                            return { properties };
-                          });
-                        }}
                       >
                         {x.name}
                       </option>
